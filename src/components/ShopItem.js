@@ -24,7 +24,14 @@ const ShopItem = ({ id, title, price, imageURL, added, handleAddToCart }) => {
       <div className="shop--item--bottom">
         <p className="shop--item--price">{price}</p>
         <div className="shop--item--controls">
-          <input className="shop--item--input" type="number" min="1" onChange={onInputChange} value={itemCount}></input>
+          <input
+            className="shop--item--input"
+            type="number"
+            min="1"
+            onChange={onInputChange}
+            value={itemCount}
+            data-testid="shopItem--input--box"
+          ></input>
           <button className="shop--item--increment shop--item--button" onClick={incrementItemCount}>
             +
           </button>
