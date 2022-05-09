@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../styles/ShopItem.css';
 
-const ShopItem = ({ id, title, price, imageURL, added }) => {
+const ShopItem = ({ id, title, price, imageURL, added, handleAddToCart }) => {
   const [itemCount, setItemCount] = useState(0);
 
   const onInputChange = (e) => {
@@ -31,7 +31,10 @@ const ShopItem = ({ id, title, price, imageURL, added }) => {
           <button className="shop--item--decrement shop--item--button" onClick={decrementItemCount}>
             -
           </button>
-          <button className={'shop--item--add shop--item--button' + (added ? ' shop--item--added' : '')}>
+          <button
+            className={'shop--item--add shop--item--button' + (added ? ' shop--item--added' : '')}
+            onClick={() => handleAddToCart(id, itemCount)}
+          >
             Add To Cart
           </button>
         </div>
