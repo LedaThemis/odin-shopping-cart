@@ -37,3 +37,16 @@ test('should update input value on increment button click', () => {
   userEvent.click(screen.getByRole('button', { name: /\+/ }));
   expect(screen.getByTestId('shopItem--input--box').value).toBe('1');
 });
+
+test('should decrement input value on decrement button click', () => {
+  render(
+    <BrowserRouter>
+      <ShopItem />
+    </BrowserRouter>
+  );
+
+  expect(screen.getByTestId('shopItem--input--box').value).toBe('0');
+  userEvent.click(screen.getByRole('button', { name: /-/ }));
+  expect(screen.getByTestId('shopItem--input--box').value).toBe('-1');
+});
+
