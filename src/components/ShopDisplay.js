@@ -11,7 +11,7 @@ const ShopDisplay = () => {
       <div>
         <p>
           You have {shoppingCartItems.length} items in your cart currently,{' '}
-          <Link className="checkout--page--link" to="checkout">
+          <Link data-testid="link--to--checkout" className="checkout--page--link" to="checkout">
             go to checkout
           </Link>
         </p>
