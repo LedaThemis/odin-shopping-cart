@@ -9,5 +9,26 @@ test('should render heading in navbar', () => {
       <Nav />
     </BrowserRouter>
   );
-  expect(screen.getByRole('heading')).toBeInTheDocument();
+  expect(screen.getByRole('heading')).toBeVisible();
+});
+
+test('should render links', () => {
+  render(
+    <BrowserRouter>
+      <Nav />
+    </BrowserRouter>
+  );
+
+  expect(screen.getAllByRole('link')[0]).toBeVisible();
+  expect(screen.getAllByRole('link')[1]).toBeVisible();
+});
+
+test('should render 2 links', () => {
+  render(
+    <BrowserRouter>
+      <Nav />
+    </BrowserRouter>
+  );
+
+  expect(screen.getAllByRole('link').length).toBe(2);
 });
