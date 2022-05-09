@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import App from './App';
+import Home from './Home';
 import Nav from './components/Nav';
 
 const RouterSwitch = () => {
@@ -7,7 +7,7 @@ const RouterSwitch = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<App />} />
+          <Route index element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>
