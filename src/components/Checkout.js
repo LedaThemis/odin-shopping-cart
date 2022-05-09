@@ -20,7 +20,7 @@ const Checkout = () => {
       {shoppingCartItems.length < 1 ? (
         <p>
           You currently have no items.{' '}
-          <Link className="shop--page--link" to="/shop">
+          <Link data-testid="link--to--shop" className="shop--page--link" to="/shop">
             go back to shop
           </Link>
         </p>
