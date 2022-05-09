@@ -1,0 +1,57 @@
+.shop--item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    grid-template-rows: 0.5fr 0.1fr 0.4fr;
+
+    border: 1px solid black;
+    padding: 1rem;
+
+    text-align: center;
+}
+
+.shop--item--top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.shop--item--bottom {
+    display: grid;
+    place-items: center;
+}
+
+
+
+
+.shop--item--controls {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.shop--item--input {
+    width: 5rem;
+}
+
+.shop--item--image {
+    width: 4rem;
+
+    object-fit: fill;
+}
+
+.shop--item--price::after {
+    content: ' $';
+}
+
+.shop--item--button {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.shop--item--added {
+    background-color: green;
+    color: white;
+}
