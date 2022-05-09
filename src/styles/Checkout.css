@@ -1,0 +1,23 @@
+.checkout--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#total--price--paragraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#checkout--button {
+background-color: transparent;
+cursor: pointer;
+}
+
+
+.shop--page--link {
+    color: black;
+}
