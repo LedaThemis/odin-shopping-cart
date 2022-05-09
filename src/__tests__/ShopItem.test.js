@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import ShopItem from '../components/ShopItem';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/dom';
-import { act } from 'react-dom/test-utils';
 
 test('should display item title', () => {
   render(
