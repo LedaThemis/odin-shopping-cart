@@ -26,10 +26,10 @@ test('should display item price', () => {
   expect(screen.getByText('3')).toBeInTheDocument();
 });
 
-test('should update input value on increment button click', () => {
+test('should increment input value on increment button click', () => {
   render(
     <BrowserRouter>
-      <ShopItem price={3} />
+      <ShopItem />
     </BrowserRouter>
   );
 
@@ -50,3 +50,31 @@ test('should decrement input value on decrement button click', () => {
   expect(screen.getByTestId('shopItem--input--box').value).toBe('-1');
 });
 
+test('should call handleAddCard on Add To Cart button click', () => {
+  const handleAddCardMock = jest.fn();
+  render(
+    <BrowserRouter>
+      <ShopItem handleAddToCart={handleAddCardMock} />
+    </BrowserRouter>
+  );
+
+  userEvent.click(screen.getByRole('button', { name: /Add To Cart/ }));
+  expect(handleAddCardMock).toHaveBeenCalled();
+});
+
+test('should call handleAddCard on Add To Cart button click with right arguments', () => {
+  const handleAddCardMock = jest.fn();
+  const itemId = 1;
+  render(
+    <BrowserRouter>
+      <ShopItem id={itemId} handleAddToCart={handleAddCardMock} />
+    </BrowserRouter>
+  );
+
+  userEvent.click(screen.getByRole('button', { name: /Add To Cart/ }));
+  expect(handleAddCardMock).toHaveBeenCalledWith(itemId, 0);
+
+  userEvent.click(screen.getByRole('button', { name: /\+/ }));
+  userEvent.click(screen.getByRole('button', { name: /Add To Cart/ }));
+  expect(handleAddCardMock).toHaveBeenCalledWith(itemId, 1);
+});
