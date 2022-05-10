@@ -28,3 +28,17 @@ test('should contain link to shop page', () => {
 
   expect(screen.getByTestId('link--to--shop')).toHaveAttribute('href', '/shop');
 });
+
+test('should not display "You currently have no items." when items are provided', () => {
+  render(
+    <BrowserRouter>
+      <ShopOutletContext.Provider
+        value={{ shoppingCartItems: [1, 2, 3], getItem: () => ({ id: Math.random(), title: '', price: 0 }) }}
+      >
+        <Checkout />
+      </ShopOutletContext.Provider>
+    </BrowserRouter>
+  );
+
+  expect(screen.queryByText('You currently have no items.')).not.toBeInTheDocument();
+});
