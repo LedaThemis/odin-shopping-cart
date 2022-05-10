@@ -7,18 +7,34 @@ import ShopDisplay from '../components/ShopDisplay';
 
 import { ShopOutletContext } from '../components/ShopOutletContext';
 
-test('should display number of items in shopping cart', () => {
-  render(
-    <BrowserRouter>
-      <ShopOutletContext.Provider
-        value={{ itemsData: [], shoppingCartItems: [0, 1, 2], isInCart: () => {}, handleAddToCart: () => {} }}
-      >
-        <ShopDisplay />
-      </ShopOutletContext.Provider>
-    </BrowserRouter>
-  );
+describe('display number of items in shopping cart', () => {
+  test('when there are 3 items', () => {
+    render(
+      <BrowserRouter>
+        <ShopOutletContext.Provider
+          value={{ itemsData: [], shoppingCartItems: [0, 1, 2], isInCart: () => {}, handleAddToCart: () => {} }}
+        >
+          <ShopDisplay />
+        </ShopOutletContext.Provider>
+      </BrowserRouter>
+    );
 
-  expect(screen.getByText('You have 3', { exact: false })).toBeInTheDocument();
+    expect(screen.getByText('You have 3', { exact: false })).toBeInTheDocument();
+  });
+
+  test('when there are 0 items', () => {
+    render(
+      <BrowserRouter>
+        <ShopOutletContext.Provider
+          value={{ itemsData: [], shoppingCartItems: [], isInCart: () => {}, handleAddToCart: () => {} }}
+        >
+          <ShopDisplay />
+        </ShopOutletContext.Provider>
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('You have 0', { exact: false })).toBeInTheDocument();
+  });
 });
 
 test('should contain link to checkout page', () => {
