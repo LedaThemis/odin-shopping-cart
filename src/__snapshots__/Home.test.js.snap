@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="Home"
+>
+  <h2
+    className="welcome--header"
+  >
+    Welcome to Our Shop!
+  </h2>
+  <p>
+    We Hope you find what you're looking for.
+  </p>
+</div>
+`;
