@@ -42,3 +42,23 @@ test('should not display "You currently have no items." when items are provided'
 
   expect(screen.queryByText('You currently have no items.')).not.toBeInTheDocument();
 });
+
+test('should display correct total price', () => {
+  render(
+    <BrowserRouter>
+      <ShopOutletContext.Provider
+        value={{
+          shoppingCartItems: [
+            { id: 1, itemCount: 2 },
+            { id: 1, itemCount: 3 },
+          ],
+          getItem: () => ({ id: Math.random(), title: '', price: 2 }),
+        }}
+      >
+        <Checkout />
+      </ShopOutletContext.Provider>
+    </BrowserRouter>
+  );
+
+  expect(screen.getByText('Which makes your total 10', { exact: false })).toBeInTheDocument();
+});
