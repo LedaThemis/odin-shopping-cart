@@ -24,7 +24,11 @@ test('should display number of items in shopping cart', () => {
 test('should contain link to checkout page', () => {
   render(
     <BrowserRouter>
-      <ShopDisplay />
+      <ShopOutletContext.Provider
+        value={{ itemsData: [], shoppingCartItems: [], isInCart: () => {}, handleAddToCart: () => {} }}
+      >
+        <ShopDisplay />
+      </ShopOutletContext.Provider>
     </BrowserRouter>
   );
 
