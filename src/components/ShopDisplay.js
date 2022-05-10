@@ -1,10 +1,13 @@
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 import ShopItem from './ShopItem';
+
+import { ShopOutletContext } from './ShopOutletContext';
 
 import '../styles/ShopDisplay.css';
 
 const ShopDisplay = () => {
-  const { itemsData, shoppingCartItems, isInCart, handleAddToCart } = useOutletContext();
+  const { itemsData, shoppingCartItems, isInCart, handleAddToCart } = useContext(ShopOutletContext);
 
   return (
     <>

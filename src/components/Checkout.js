@@ -1,10 +1,13 @@
-import { useOutletContext, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CheckoutItem from './CheckoutItem';
+
+import { useContext } from 'react';
+import { ShopOutletContext } from './ShopOutletContext';
 
 import '../styles/Checkout.css';
 
 const Checkout = () => {
-  const { shoppingCartItems, getItem } = useOutletContext();
+  const { shoppingCartItems, getItem } = useContext(ShopOutletContext);
 
   const getTotalPrice = () => {
     return shoppingCartItems

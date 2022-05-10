@@ -3,6 +3,8 @@ import '../styles/Shop.css';
 
 import { Outlet } from 'react-router-dom';
 
+import { ShopOutletContext } from './ShopOutletContext';
+
 const Shop = () => {
   const [itemsData, setItemsData] = useState([]);
   const [shoppingCartItems, setShoppingCartItems] = useState([]);
@@ -56,7 +58,9 @@ const Shop = () => {
   return (
     <div className="shop">
       <h2>Shop</h2>
-      <Outlet context={{ itemsData, shoppingCartItems, isInCart, handleAddToCart, getItem }} />
+      <ShopOutletContext.Provider value={{ itemsData, shoppingCartItems, isInCart, handleAddToCart, getItem }}>
+        <Outlet />
+      </ShopOutletContext.Provider>
     </div>
   );
 };
