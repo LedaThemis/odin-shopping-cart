@@ -5,25 +5,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 import ShopDisplay from '../components/ShopDisplay';
 
-const outletDataMock = { itemsData: [], shoppingCartItems: [0, 1, 2], isInCart: () => {}, handleAddToCart: () => {} };
-const useOutletContextMock = () => outletDataMock;
-
-jest.mock('react-router-dom', () => {
-  const originalModule = jest.requireActual('react-router-dom');
-
-  return {
-    __esModule: true,
-    ...originalModule,
-    useOutletContext: useOutletContextMock,
-  };
-});
+import { ShopOutletContext } from '../components/ShopOutletContext';
 
 test('should display number of items in shopping cart', () => {
   render(
     <BrowserRouter>
-      <div>
+      <ShopOutletContext.Provider
+        value={{ itemsData: [], shoppingCartItems: [0, 1, 2], isInCart: () => {}, handleAddToCart: () => {} }}
+      >
         <ShopDisplay />
-      </div>
+      </ShopOutletContext.Provider>
     </BrowserRouter>
   );
 
@@ -33,9 +24,7 @@ test('should display number of items in shopping cart', () => {
 test('should contain link to checkout page', () => {
   render(
     <BrowserRouter>
-      <div>
-        <ShopDisplay />
-      </div>
+      <ShopDisplay />
     </BrowserRouter>
   );
 
